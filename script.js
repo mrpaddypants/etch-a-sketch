@@ -1,7 +1,7 @@
 const field = document.querySelector(".box-container");
 const generateFieldBtn = document.querySelector(".generate-field-button");
-const fieldHeight = 960;
-const fieldWidth = 960;
+const fieldHeight = 400;
+const fieldWidth = 400;
 const fieldSize = fieldHeight * fieldWidth;
 
 
@@ -16,8 +16,12 @@ generateFieldBtn.addEventListener("click", () => {
         let squareHeightAndWidth = Math.sqrt(squareSize);
         for (i = 1; i <= squares; i++) {
             const box = document.createElement("div");
-            box.style.cssText = `border: none; height: ${squareHeightAndWidth}px; width: ${squareHeightAndWidth}px; background-color: #e0e2db;`;
+            box.style.cssText = `height: ${squareHeightAndWidth}px; width: ${squareHeightAndWidth}px;`;
+            box.classList.add("boxes");
             field.appendChild(box);
         }
     }
+    
+
+
 })
