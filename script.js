@@ -14,22 +14,35 @@ generateFieldBtn.addEventListener("click", () => {
     let squares = userInput**2;
     if (userInput > 100) {
         alert("Don't break the browser pls.");
-    } else {
+
+    } else if (field.childNodes.length < squares) {//prevents user from creating unlimited fields
+
+        //calculates square size and makes if fit the field container
         let squareSize = fieldSize / squares;
         let squareHeightAndWidth = Math.sqrt(squareSize);
-        for (i = 1; i <= squares; i++) {
+
+        //creates squares
+        for (let i = 1; i <= squares; i++) {
             const box = document.createElement("div");
+            box.style.cssText = `height: ${squareHeightAndWidth}px; width: ${squareHeightAndWidth}px;`;
             field.appendChild(box);
             
+
+            //sets opacity value and random color
             const randomColor = "#"+((1<<24)*Math.random()|0).toString(16);
-            box.style.cssText = `height: ${squareHeightAndWidth}px; width: ${squareHeightAndWidth}px;`;
-            
+            let opacityValue = 0.1;
             box.addEventListener("mouseover", () => {
+                box.style.opacity = `${opacityValue += 0.1}`;
                 box.style.backgroundColor = `${randomColor}`;
             });
         }
+    } else {
+        alert("Use the reset button first!")
     }
+    
 });
+
+
 
 resetBtn.addEventListener("click", () => {
     location.reload();
